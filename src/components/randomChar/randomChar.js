@@ -34,14 +34,14 @@ export default class RandomChar extends Component {
 
     updateChar() {
         const id = Math.floor(Math.random()*160+25);//25-140
-        this.gotService.getCharacter(id)
+        this.gotService
+            .getCharacter(id)
             .then(this.onCharLoaded)
             .catch(this.onError);
     }
 
     render() {
         const {char, loading, error } = this.state;
-
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
         const content = !(loading || error) ? <View char={char}/> : null;
